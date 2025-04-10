@@ -9,6 +9,7 @@ use App\Http\Controllers\API\FoodController;
 use App\Http\Controllers\API\PregnancyController;
 use App\Http\Controllers\API\RegistrationChildController;
 use App\Http\Controllers\API\RegistrationPregnancyController;
+use App\Http\Controllers\API\ScheduleUserController;
 use App\Http\Middleware\AuthApiMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,6 @@ Route::middleware(AuthApiMiddleware::class)->group(function () {
 
     Route::post('registration/pregnancy', [RegistrationPregnancyController::class, 'store']);
     Route::post('registration/child', [RegistrationChildController::class, 'store']);
+    Route::get('schedules/{type}', [ScheduleUserController::class, 'index']);
+    Route::post('schedules/{id}/set-promise', [ScheduleUserController::class, 'update']);
 });

@@ -9,7 +9,7 @@ class ScheduleUserRepository
 {
     public function getAllScheduleUsersByUsersId($userId)
     {
-        return ScheduleUser::where('user_id', $userId)->get();
+        return ScheduleUser::where('user_id', $userId);
     }
 
     public function getScheduleUserById($id)

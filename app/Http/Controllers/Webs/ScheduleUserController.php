@@ -14,7 +14,7 @@ class ScheduleUserController extends Controller
     public function index($userId, $type)
     {
         return view('schedules.users.index', [
-            'schedules' => $this->scheduleUserRepository->getAllScheduleUsersByUsersId($userId)->where('type', $type),
+            'schedules' => $this->scheduleUserRepository->getAllScheduleUsersByUsersId($userId)->where('type', $type)->get(),
             'userId' => $userId,
             'type' => $type,
             'title' => 'Jadwal ' . ($type == 'child' ? 'Imuniasi' : 'Konsultasi')
