@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class RegistrationChild extends Model
+class ScheduleChild extends Model
 {
     use HasUuids;
-    protected $table = 'registrations_children';
 
-    public function newUniqueId(): string
+    protected $table = 'schedules_children';
+
+    protected $guarded = [];
+    public function newUniqueId()
     {
-        return (string) Uuid::uuid4();
+        return Uuid::uuid4();
     }
 }

@@ -16,4 +16,8 @@ class Child extends Model
     {
         return (string) Uuid::uuid4();
     }
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'source_id', 'id');
+    }
 }

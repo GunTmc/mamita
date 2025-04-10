@@ -34,6 +34,13 @@ class UserRepository
                 return $query->whereRaw('LOWER(users.email) like ?', ['%' . strtolower($params['search']) . '%']);
             });
     }
+    public function getAllUserUsers($params)
+    {
+        return User::where('rule',  User::ROLE_USER)
+            ->when(isset($params['search']), function ($query) use ($params) {
+                return $query->whereRaw('LOWER(users.email) like ?', ['%' . strtolower($params['search']) . '%']);
+            });
+    }
 
     public function getUserById($id)
     {

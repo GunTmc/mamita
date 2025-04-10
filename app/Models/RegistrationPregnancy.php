@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Models\Masters;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Pregnancy extends Model
+class RegistrationPregnancy extends Model
 {
     use HasUuids;
-    protected $table = 'pregnancies';
-    protected $guarded = [];
+    protected $table = 'registrations_pregnancies';
 
+    protected $guarded = [];
 
     public function newUniqueId(): string
     {
         return (string) Uuid::uuid4();
-    }
-
-    public function articles()
-    {
-        return $this->hasMany(Article::class, 'source_id', 'id');
     }
 }

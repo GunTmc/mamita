@@ -12,4 +12,8 @@ class DashboardService
     {
         return $this->userRepository->getAllUserAdmins($data);
     }
+    public function getDataDashboardUserAdmin($data)
+    {
+        return $this->userRepository->getAllUserUsers($data);
+    }
 }

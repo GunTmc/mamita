@@ -8,7 +8,8 @@ class PregnancyRepository
 {
     public function getAllPregnancy($params)
     {
-        return Pregnancy::orderByRaw('CAST(gestational_age AS DECIMAL(10,2)) ASC');
+        return Pregnancy::orderByRaw('CAST(gestational_age AS DECIMAL(10,2)) ASC')
+            ->with(['articles']);
     }
 
     public function createPregnancy($data)

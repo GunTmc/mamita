@@ -9,7 +9,8 @@ class ChildRepository
 
     public function getAllChildren($params)
     {
-        return Child::orderByRaw('CAST(age AS DECIMAL(10,2)) ASC');
+        return Child::orderByRaw('CAST(age AS DECIMAL(10,2)) ASC')
+            ->with(['articles']);
     }
 
     public function getChildById($id)

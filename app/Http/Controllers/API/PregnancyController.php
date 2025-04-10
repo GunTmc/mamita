@@ -19,13 +19,22 @@ class PregnancyController extends Controller
                 'data' => $this->pregnancyService->DataPregnancy([])->get()->map(function ($pregnancy) {
                     return [
                         'id' => $pregnancy->id,
-                        'name' => $pregnancy->name,
                         'note' => $pregnancy->note,
                         'usg' => $pregnancy->usg ? Storage::url($pregnancy->usg) : null,
                         'fetus' => $pregnancy->fetus ? Storage::url($pregnancy->fetus) : null,
                         'gestationalAge' => $pregnancy->gestational_age,
                         'createdAt' => $pregnancy->created_at->format('Y-m-d H:i:s'),
                         'updatedAt' => $pregnancy->updated_at->format('Y-m-d H:i:s'),
+                        'articles' => $pregnancy->articles->map(function ($article) {
+                            return [
+                                'id' => $article->id,
+                                'title' => $article->title,
+                                'body' => $article->body,
+                                'image' => Storage::url($article->image),
+                                'created_at' => $article->created_at->format('Y-m-d H:i:s'),
+                                'updated_at' => $article->updated_at->format('Y-m-d H:i:s')
+                            ];
+                        })
                     ];
                 })->toArray(),
             ]

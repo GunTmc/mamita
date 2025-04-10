@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\DestroyUserRequest;
 use App\Http\Requests\Users\ShowUserRequest;
 use App\Http\Requests\Users\UpdateUserRequest;
+use App\Models\User;
 use App\Services\Users\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,9 +19,16 @@ class UserController extends Controller
     public function show(ShowUserRequest $showUserRequest)
     {
         $data = $showUserRequest->validated();
-        return view('users.user', [
-            'user' => $this->userService->getUser($data)
-        ]);
+        $user =  Auth::user();
+        if ($user->rule == User::ROLE_SUPER_ADMIN) {
+            return view('users.user', [
+                'user' => $this->userService->getUser($data)
+            ]);
+        } else {
+            return view('users.userHealthCare', [
+                'user' => $this->userService->getUser($data)
+            ]);
+        }
     }
 
     public function update(UpdateUserRequest $request)

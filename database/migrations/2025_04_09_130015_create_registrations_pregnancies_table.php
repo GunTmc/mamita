@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('registrations_pregnancies', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('user_id')->index();
-            $table->string('last_period_menstruation');
-            $table->string('period_pregnancy');
-            $table->string('history_pregnancy');
+            $table->timestamp('last_period_menstruation');
+            $table->string('period_pregnancy')->nullable();
+            $table->timestamp('estimated_date_of_delivery')->nullable();
+            $table->string('history')->nullable();
             $table->timestamps();
         });
     }
