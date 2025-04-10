@@ -3,8 +3,9 @@
 
 use App\Http\Controllers\API\RegistrationChildController;
 use App\Http\Controllers\API\RegistrationPregnancyController;
-use App\Http\Controllers\Webs\ScheduleUserController;
 use App\Http\Controllers\Webs\DashboardController;
+use App\Http\Controllers\Webs\ScheduleUserController;
+use App\Http\Controllers\Webs\ToDoController;
 use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,8 @@ Route::middleware(AuthMiddleware::class)->group(function () {
         Route::post('child/{id}/edit', [RegistrationChildController::class, 'update'])->name('registrationChild.update');
         Route::post('child/{id}/delete', [RegistrationChildController::class, 'destroy'])->name('registrationChild.delete');
     });
+
+    Route::get('/todo{userId}', [ToDoController::class, 'index'])->name('users.toDo.index');
 
     Route::prefix('/schedules/{userId}/{type}')->group(function () {
         Route::get('/', [ScheduleUserController::class, 'index'])->name('schedules.user.index');

@@ -20,7 +20,7 @@
             <a class="btn px-10 rounded my-1 bg-[#D690DF] text-white hover:bg-pink-400"
                 href="{{ route('registrationPregnancy.index', ['userId' => $userId]) }}">Kembali</a>
             <a class="btn px-10 rounded my-1 bg-[#D690DF] text-white hover:bg-pink-400"
-                href="{{ route('registrationPregnancy.index', ['userId' => $userId]) }}">Check To Do</a>
+                href="{{ route('users.toDo.index', ['userId' => $userId]) }}">Check To Do</a>
             <a class="btn px-10 rounded my-1 bg-[#D690DF] text-white hover:bg-pink-400"
                 href="{{ route('schedules.user.index', ['userId' => $userId, 'type' => 'preg']) }}">Jadwal Konsultasi</a>
             <a class="btn px-10 rounded my-1 bg-[#D690DF] text-white hover:bg-pink-400"
